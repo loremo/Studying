@@ -1,0 +1,11 @@
+Über den öffentlichen Ordner kannst du einzelne Dateien in deiner Dropbox problemlos freigeben. Eine Datei, die du in diesem Ordner ablegst, erhält einen eigenen Internet-Link, über den du diese Datei für andere (selbst wenn diese keine Dropbox-Benutzer sind) freigeben kannst.
+
+1. Schritt: Lege eine Datei im Ordner Öffentlich ab.
+
+2. Schritt: Klicke mit der rechten Maustaste auf diese Datei und wähle Dropbox > Öffentlichen Link kopieren. Damit wird ein Internet-Link zu deiner Datei erstellt, den du überall veröffentlichen kannst: in E-Mails, Sofortnachrichten, Blogs usw.
+
+Und das war’s auch schon! Um deine Datei freizugeben, schickst deinen Freunden einfach den Link.
+
+Viel Spaß mit deiner Dropbox!
+- Das Dropbox-Team
+
