@@ -1,0 +1,10 @@
+import java.util.ArrayList;
+
+public interface State {	
+	public setParent();
+	public getParent();
+	public boolean equals(Object o);
+	public ArrayList<State> getFollowingStates();
+	public void setVisited(boolean b);
+	public boolean visited();
+}

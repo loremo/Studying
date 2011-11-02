@@ -1,0 +1,19 @@
+Zustaende:
+1) Freies Feld
+2) Hero auf freiem Feld
+3) Freies Zielfeld
+4) Hero auf freiem Zielfeld
+5) Kiste
+6) Kiste auf dem Zielfeld
+7) Wand
+
+Aktionen:
+1) Bewegung des Heroes nach links, rechts, oben, unten falls das jeweilige Feld frei ist
+2) Verschieben der Kiste nach links, rechts, oben, unten falls Hero vor der Kiste steht
+   und nach der Kiste entwerder Zustand 1) oder 3) ist.
+   
+Ziele:
+Verdecken aller Zielfelder durch Kisten.
+
+Ausführungskosten:
+Jede Aktion kostet 1 Einheit.
