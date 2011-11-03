@@ -202,9 +202,9 @@ public class SokobanState implements State {
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
-							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL,Cell.SPACE,Cell.HERO,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL},
 							// if you place the hero left to the goal, BreadthSearch need more time than DepthSearch!
-							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.BOX_GOAL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.HERO,Cell.BOX_GOAL,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},};
 		
 		System.out.println("DepthSearch:");
