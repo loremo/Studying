@@ -14,6 +14,11 @@
 		<item value="786" key="size.x"/>
 		<item value="362" key="size.y"/>
 	</section>
+	<section name="ExtractMethodWizard">
+		<item value="false" key="ThrowRuntimeExceptions"/>
+		<item value="false" key="GenerateJavadoc"/>
+		<item value="1" key="AccessModifier"/>
+	</section>
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="DialogBounds_SuperInterfaceSelectionDialog">
@@ -22,6 +27,10 @@
 		<item value="548" key="DIALOG_HEIGHT"/>
 		<item value="85" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item value="400" key="height"/>
+		<item value="600" key="width"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>

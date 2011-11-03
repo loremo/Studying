@@ -6,7 +6,6 @@
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="SokobanState.Hero"/>
 <fullyQualifiedTypeName name="SokobanState.Direction"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="SokobanState.Cell"/>
 <fullyQualifiedTypeName name="LabyrinthState"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
@@ -15,4 +14,9 @@
 <fullyQualifiedTypeName name="BreadthSearch"/>
 <fullyQualifiedTypeName name="SokobanState"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.sql.Time"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.beans.Expression"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
 </qualifiedTypeNameHistroy>
