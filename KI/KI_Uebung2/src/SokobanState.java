@@ -151,7 +151,7 @@ public class SokobanState implements State {
 	}
 
 	@Override
-	public void setVisited(boolean b) {
+	public void setVisited() {
 		if (!visited.contains(this))
 			visited.add(this);
 	}

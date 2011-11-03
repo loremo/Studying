@@ -12,8 +12,8 @@ public class Kachel {
 	public boolean getFlag(){
 		return flag;
 	}
-	public void setFlag(boolean b){
-		flag = b;
+	public void setFlag(){
+		flag = true;
 	}
 	
 	public String getName(){

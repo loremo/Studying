@@ -5,6 +5,6 @@ public interface State {
 	public State getParent();
 	public boolean equals(Object o);
 	public ArrayList<State> getFollowingStates();
-	public void setVisited(boolean b);
+	public void setVisited();
 	public boolean visited();
 }

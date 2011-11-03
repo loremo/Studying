@@ -47,8 +47,8 @@ public class LabyrinthState implements State {
 	}
 
 	@Override
-	public void setVisited(boolean t) {
-		kachel.setFlag(t);
+	public void setVisited() {
+		kachel.setFlag();
 		
 	}
 

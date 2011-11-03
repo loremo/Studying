@@ -13,7 +13,7 @@ public class DepthSearch {
 			return;
 		} else {
 			for (State s : current.getFollowingStates()){
-				s.setVisited(true);
+				s.setVisited();
 				solve(s, finish);
 			}
 		}	
