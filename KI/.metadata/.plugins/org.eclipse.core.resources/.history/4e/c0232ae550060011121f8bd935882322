@@ -175,6 +175,20 @@ public class SokobanState implements State {
 	}
 
 	public static void main(String[] args) {
+		/*Cell[][] start = {	{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.HERO,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.BOX,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.GOAL,Cell.WALL},
+							{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL}};
+		
+		Cell[][] finish = {	{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.HERO,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.BOX_GOAL,Cell.WALL},
+							{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL}};*/
+
 		Cell[][] start = {	{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.HERO,Cell.SPACE,Cell.SPACE,Cell.WALL},
