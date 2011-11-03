@@ -22,6 +22,7 @@ public class BreadthSearch {
 		State next = solution.remove(0);
 		if (next.equals(finish)){
 			printSolution();
+			solution = null; // stops the algorithm from further execution (produces exception -> catch)
 			return;
 		}
 		for (State s : next.getFollowingStates()){

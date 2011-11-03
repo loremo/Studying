@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class SokobanState implements State {
 		
 	private State parent; // parent state from which this state was derived
@@ -176,7 +175,7 @@ public class SokobanState implements State {
 	}
 
 	public static void main(String[] args) {
-		Cell[][] start = {	{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
+		/*Cell[][] start = {	{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.HERO,Cell.SPACE,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.BOX,Cell.SPACE,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.SPACE,Cell.WALL},
@@ -188,17 +187,45 @@ public class SokobanState implements State {
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.HERO,Cell.WALL},
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.BOX_GOAL,Cell.WALL},
-							{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL}};
+							{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL}};*/
+
+		Cell[][] start = {	{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.HERO,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.BOX,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.GOAL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},};
+		
+		
+		Cell[][] finish = {	{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.WALL},
+							// if you place the hero left to the goal, BreadthSearch need more time than DepthSearch!
+							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.SPACE,Cell.HERO,Cell.BOX_GOAL,Cell.WALL},
+							{Cell.WALL,Cell.SPACE,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL},};
 		
 		System.out.println("DepthSearch:");
 		DepthSearch ds = new DepthSearch();
-		ds.solve(new SokobanState(start), new SokobanState(finish));
+		long time = System.currentTimeMillis();
+		try{
+			ds.solve(new SokobanState(start), new SokobanState(finish));
+		} catch(Exception e){
+		}
+		System.out.println("Execution time: " + (System.currentTimeMillis() - time));
 		
 		// flush the list of visited states (because its static)
 		SokobanState.visited = new ArrayList<SokobanState>();
 
 		System.out.println("BreadthSearch:");
 		BreadthSearch bs = new BreadthSearch();
-		bs.solve(new SokobanState(start), new SokobanState(finish));
+		time = System.currentTimeMillis();
+		try{
+			bs.solve(new SokobanState(start), new SokobanState(finish));
+		} catch(Exception e){
+		}
+		System.out.println("Execution time: " + (System.currentTimeMillis() - time));
 	}
 }

@@ -134,7 +134,7 @@ public class Labyrinth {
 		DepthSearch ds = new DepthSearch();
 		ds.solve(new LabyrinthState(l.getKachel(0, 0)), new LabyrinthState(l.getKachel(6, 3)));
 				
-		l = createLabyrinth();		
+		l = createLabyrinth(); // resetting visited-values
 		System.out.println("BreadthSearch:");
 		BreadthSearch bs = new BreadthSearch();
 		bs.solve(new LabyrinthState(l.getKachel(0, 0)), new LabyrinthState(l.getKachel(6, 3)));

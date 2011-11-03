@@ -10,6 +10,7 @@ public class DepthSearch {
 		solution.add(current);
 		if (current.equals(finish)){
 			System.out.println(solution);
+			solution = null; // stops the algorithm from further execution (produces exception -> catch)
 			return;
 		} else {
 			for (State s : current.getFollowingStates()){
