@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class LabyrinthState implements State {
 	
 	private Kachel kachel;
-	
+	private State parent;	
 	
 	public LabyrinthState(Kachel k){
 		kachel = k;
@@ -14,7 +14,7 @@ public class LabyrinthState implements State {
 	}	
 	
 	public String toString(){
-		return kachel.getName();
+		return kachel.getName() + " ";
 	}
 
 	@Override
@@ -55,5 +55,16 @@ public class LabyrinthState implements State {
 	@Override
 	public boolean visited() {
 		return kachel.getFlag();
+	}
+
+	@Override
+	public void setParent(State s) {
+		parent = s;
+		
+	}
+
+	@Override
+	public State getParent() {
+		return parent;
 	}
 }

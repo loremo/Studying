@@ -17,7 +17,7 @@ public class SokobanState implements State {
 	}
 	
 	enum Direction{
-		DOWN,LEFT,UP,RIGHT
+		UP,RIGHT,DOWN,LEFT
 	}
 	
 	public SokobanState(Cell[][] g){
@@ -32,8 +32,9 @@ public class SokobanState implements State {
 		}
 	}
 		
+	// Hero's movement logic
 	public Cell[][] move(int x, int y){
-		Cell[][] g = null;
+		Cell[][] g = null; // doesn't change the state of the current game, but returns a new game!
 		Cell after; 
 			try {
 				after = game[hero.y][hero.x]==Cell.HERO_GOAL?Cell.GOAL:Cell.SPACE; // What remains in the cell the hero used to be after he has moved?
@@ -80,17 +81,6 @@ public class SokobanState implements State {
 			return g;
 	}
 
-	@Override
-	public void setParent(State s) {
-		this.parent = s;
-		
-	}
-
-	@Override
-	public State getParent() {
-		return parent;
-	}
-
 	public Cell[][] getGame(){
 		Cell[][] g = new Cell[game.length][game[0].length];
 		for(int i = 0; i < game.length; ++i){
@@ -98,13 +88,23 @@ public class SokobanState implements State {
 				g[i][j] = game[i][j];			
 			}			
 		}
-		return g;
+		return g;	// return by value
 	}
 	
 	public String toString(){
 		return "X: " + (hero.x+1) + " Y: " + (hero.y+1) + "\n";
 	}
 
+	@Override
+	public void setParent(State s) {
+		this.parent = s;		
+	}
+
+	@Override
+	public State getParent() {
+		return parent;
+	}
+	
 	@Override
 	public ArrayList<State> getFollowingStates() {
 		ArrayList<State> stateList = new ArrayList<State>();
@@ -150,23 +150,16 @@ public class SokobanState implements State {
 		return stateList;
 	}
 
-	static boolean  first = true;
 	@Override
 	public void setVisited(boolean b) {
-		if (first){
-			visited.add(this);
-			first = false;
-		}
 		if (!visited.contains(this))
 			visited.add(this);
 	}
 
 	@Override
 	public boolean visited() {
-		for (State s : visited){
-			if (s.equals(this))
-				return true;
-		}
+		if (visited.contains(this))
+			return true;
 		return false;
 	}
 	
@@ -197,16 +190,15 @@ public class SokobanState implements State {
 							{Cell.WALL,Cell.SPACE,Cell.SPACE,Cell.BOX_GOAL,Cell.WALL},
 							{Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL,Cell.WALL}};
 		
+		System.out.println("DepthSearch:");
 		DepthSearch ds = new DepthSearch();
-		new SokobanState(start).setVisited(true);
 		ds.solve(new SokobanState(start), new SokobanState(finish));
 		
+		// flush the list of visited states (because its static)
 		SokobanState.visited = new ArrayList<SokobanState>();
-		
+
+		System.out.println("BreadthSearch:");
 		BreadthSearch bs = new BreadthSearch();
 		bs.solve(new SokobanState(start), new SokobanState(finish));
-		
-		//SokobanState.visited = new ArrayList<SokobanState>();		
-		//bs.getSolution();
 	}
 }

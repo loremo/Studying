@@ -178,9 +178,6 @@ public class Labyrinth {
 		bs.solve(new LabyrinthState(l.getKachel(0, 0)), new LabyrinthState(l.getKachel(6, 3)));
 
 		l.resetVisited();
-		
-		bs.getSolution();
-
 	}
 
 }
