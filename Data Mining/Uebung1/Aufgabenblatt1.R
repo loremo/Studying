@@ -41,6 +41,10 @@ var(v[,1])
 # Standardabweichung
 sqrt(var(v[,1]))
 
+# Box-Plot
+png(filename="boxplot.png")
+boxplot(v[,1])
+
 ################## Aufgabe 3
 v <- read.csv("data2.csv", header=TRUE)
 cor(v[,1], v[,2])
