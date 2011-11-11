@@ -18,7 +18,7 @@ _Bool play(unsigned long *dataset, int pos){
       printf("Invalid pin number.\n");
       return false;
    }
-   else if(pos > 0){
+   else if(pos > 0){ // 1 cone chosen
       if(!getBit(*dataset, pos-1)){
          printf("Pin %d is no longer standing.\n", pos);
          return false;
@@ -28,18 +28,18 @@ _Bool play(unsigned long *dataset, int pos){
 	 return true;
       }
    }
-   else{
-      if(!getBit(*dataset, -1*pos-1)){
+   else if(pos < 0){ // 2 cones chosen
+      if(!getBit(*dataset, -1*pos-1)){ // check if n-th cone is still standing
          printf("Pin %d is no longer standing.\n", -1*pos);
          return false;
       }
-      else if(!getBit(*dataset, -1*pos)){
+      else if(!getBit(*dataset, -1*pos)){ // check if (n+1)-th cone is still standing
          printf("Pin %d is no longer standing.\n", -1*pos+1);
          return false;
       }
       else{
-         setBit(dataset, -1*pos-1, 0);
-         setBit(dataset, -1*pos, 0);
+         setBit(dataset, -1*pos-1, 0); // set n-th cone
+         setBit(dataset, -1*pos, 0); // set (n+1) cone
          return true;
       }
    }
@@ -65,27 +65,27 @@ void printKegeln(unsigned long *dataset) {
 }
 
 void bot(unsigned long *dataset){
-   int kegelnCount = 0;
+   int kegelnCount = 0; // how many cones are still standing
    for(int i = 0; i < 32; ++i) {
       kegelnCount += getBit(*dataset, i);
    }
    srand(time(NULL));
-   int index = rand() % kegelnCount + 1;
-   //printf("Index davor: %d\n", index);
+   int index = rand() % kegelnCount + 1; // choose the index of the cone to be removed
+										 //(not the same as the position of the cone in the dataset!
+										 // this will be computed in the next step)
    for(int i = 0; i < 32; ++i) {
       if(getBit(*dataset, i)){
 	 --index;
 	 if(index == 0){
-	    index = i + 1;
-  	    //printf("Index danach: %d\n", index);
+	    index = i + 1; // the position of the cone to be removed in the dataset
 	    break;
 	 }
       }
    }
    srand(time(NULL));
-   if(getBit(*dataset, index)){
-      if ((rand() % 2) != 0){
-         play(dataset, index);
+   if(getBit(*dataset, index)){ // is the (pos+1)-th cone standing?
+      if ((rand() % 2) != 0){ // if so, remove 1 or 2 cones?
+         play(dataset, index); 
          printf("My Move: %d\n", index);
       }
       else{
@@ -93,11 +93,10 @@ void bot(unsigned long *dataset){
          printf("My Move: %d\n", -1*index);
       }
    }
-   else{
+   else{ // the (pos+1)-th cone isn't standing, so you can only remove 1 cone.
       play(dataset, index);
       printf("My Move: %d\n", index);
    }
-   //printf("Anz Kegeln: %d\n", kegelnCount);
 }
 
 int main() {
@@ -107,16 +106,13 @@ int main() {
    for (int i = 0 ; i < anzKegeln; ++i){
       setBit(&kegeln, i, 1);
    }
-   /*for(int i = 0; i < 32; ++i) {
-      printf("%d\n",getBit(kegeln, i));
-   }*/
    printf("*** Dawson’s Bowling Game ***\n");
    printKegeln(kegeln);
    printf("Your Move: ");
    int pos = 0;
    while (scanf("%d",&pos) == 1){
-      if (!play(&kegeln, pos)){
-	 printf("Your Move: ");
+      if (!play(&kegeln, pos)){ // invalid input
+	     printf("Your Move: "); 
          continue;
       }
       if(kegeln == 0){
