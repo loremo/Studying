@@ -82,10 +82,10 @@ void evaluate(int ascii, int state){
 
 int main(){
   printf("Eintippen:\n");
-  int a;
+  int input;
   int currentState = S0;
-  while ((a = getchar()) != EOF){
-    currentState = lookupTable[determineInput(a)][currentState];
+  while ((input = getchar()) != EOF){
+    currentState = lookupTable[determineInput(input)][currentState];
     if ( currentState == TRASH){
       sum = sum + sign * (preDecimal + postDecimal) * exp10(expSign * expNumber);
       //printf("number: %f\n", sign * (preDecimal + postDecimal) * exp10(expSign * expNumber));
