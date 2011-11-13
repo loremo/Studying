@@ -98,7 +98,7 @@ int main(){
       countDecimalPlaces = 0;
     }
     else{
-      evaluate(a, currentState);
+      evaluate(input, currentState);
     }
   }
   printf("\n%.4f\n", sum);
