@@ -3,6 +3,12 @@
 #include <stdbool.h>
 #include <math.h>
 
+/* compile with:
+
+gcc -std=gnu99 -o soupsum soupsum.c -lm
+
+*/
+
  /**********************************************************************
  * Typical implementation of a final state machine with a lookup table *
  ***********************************************************************/
@@ -35,14 +41,15 @@ int lookupTable[5][8] =
 {TRASH,	TRASH,	TRASH,	TRASH,	TRASH,	TRASH,	TRASH,	TRASH},	/* INVALID */
 };
 
-double sum = 0.0;
-int sign = 1;  // either 1 or -1
-int expSign = 1; // either 1 or -1
-int expNumber = 0;
-int preDecimal = 0;
-double postDecimal = 0.0;
-int countDecimalPlaces = 0;
+/* Candidates for a struct:*/
+int sign = 1;  // sign of the whole expression (either 1 or -1)
+int expSign = 1; // sign of the number after E/e (either 1 or -1)
+int expNumber = 0; // number after E/e
+int preDecimal = 0; // integer value of the whole expression
+double postDecimal = 0.0; // decimal places of the whole expression ( btw. 0 and 0.9999...)
+int countDecimalPlaces = 0; // amount of decimal places
 
+/* Determines the kind of input*/
 int determineInput(int ascii){
   if (ascii >= '0' && ascii <= '9')
     return DIGIT;
@@ -52,9 +59,10 @@ int determineInput(int ascii){
     return DOT;
   else if (ascii == 'e' || ascii == 'E')
     return EXP;
-  return INVALID;
+  return INVALID; // else
 }
 
+/*evaluates the actual char by adjusting the fields of the number-struct */
 void evaluate(int ascii, int state){
   switch(state){
     case S1:;
@@ -66,7 +74,6 @@ void evaluate(int ascii, int state){
     case S4:;
       if(ascii != '.'){
 	postDecimal = postDecimal + (double)(ascii - '0') * exp10(--countDecimalPlaces);
-	//printf(" %d * %f = %f\n",(ascii - '0'), exp10(countDecimalPlaces), (ascii - '0') * exp10(countDecimalPlaces));
       }
       break;   
     case S6:;
@@ -81,15 +88,16 @@ void evaluate(int ascii, int state){
 }
 
 int main(){
-  printf("Eintippen:\n");
+  printf("Type in:\n");
   int input;
   int currentState = S0;
+  double sum = 0.0;
   while ((input = getchar()) != EOF){
     currentState = lookupTable[determineInput(input)][currentState];
     if ( currentState == TRASH){
       sum = sum + sign * (preDecimal + postDecimal) * exp10(expSign * expNumber);
-      //printf("number: %f\n", sign * (preDecimal + postDecimal) * exp10(expSign * expNumber));
       currentState = S0;
+      /* setting the fields of the number-struct to it's initial values */
       sign = 1;
       expSign = 1;
       expNumber = 0;
