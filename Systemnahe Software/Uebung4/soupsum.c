@@ -73,7 +73,7 @@ void evaluate(int ascii, int state){
       break;  
     case S4:;
       if(ascii != '.'){
-	postDecimal = postDecimal + (double)(ascii - '0') * exp10(--countDecimalPlaces);
+	postDecimal = postDecimal + (double)(ascii - '0') * pow(10, --countDecimalPlaces);
       }
       break;   
     case S6:;
@@ -95,7 +95,7 @@ int main(){
   while ((input = getchar()) != EOF){
     currentState = lookupTable[determineInput(input)][currentState];
     if ( currentState == TRASH){
-      sum = sum + sign * (preDecimal + postDecimal) * exp10(expSign * expNumber);
+      sum = sum + sign * (preDecimal + postDecimal) * pow(10, expSign * expNumber);
       currentState = S0;
       /* setting the fields of the number-struct to it's initial values */
       sign = 1;
