@@ -88,7 +88,6 @@ void evaluate(int ascii, int state){
 }
 
 int main(){
-  printf("Type in:\n");
   int input;
   int currentState = S0;
   double sum = 0.0;
@@ -104,11 +103,14 @@ int main(){
       preDecimal = 0;
       postDecimal = 0.0;
       countDecimalPlaces = 0;
+      if(input == '-' || input == '.')
+      ungetc(input, stdin);
     }
     else{
       evaluate(input, currentState);
     }
   }
-  printf("\n%.4f\n", sum);
+  sum = sum + sign * (preDecimal + postDecimal) * pow(10, expSign * expNumber);
+  printf("%.4f\n", sum);
   return 0;
 }
