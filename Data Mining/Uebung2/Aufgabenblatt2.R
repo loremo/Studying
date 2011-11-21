@@ -1,4 +1,4 @@
-################## Aufgabe 1
+################## Aufgabe 5
 v <- read.csv("data1.csv", header=TRUE)
 d <- dist(v)
 d <- d*d
