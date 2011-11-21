@@ -23,3 +23,14 @@ plot(centroid)
 ward <- hclust(d, method="ward")
 png(filename="ward.png")
 plot(ward)
+
+################## Aufgabe 6
+# x1 = (1,0)
+# x2 = (2,0)
+# x3 = (0,1)
+# x4 = (2,2)
+# x5 = (2,1)
+
+# C = {{x1,x2,x4,x5},{x3}}
+
+# Der Durchmesser von C ist mit D = 1,118 optimal
