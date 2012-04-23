@@ -52,6 +52,7 @@ void factorize(unsigned long int n) {
   for (int i = 0; i < count; ++i)
     printf("%lu\t",factors[i]);
   printf("\n");
+  free(factors);
 }
 
 int main(int argc, char *argv[] ) {
@@ -61,7 +62,6 @@ int main(int argc, char *argv[] ) {
   }
   
   pid_t pid;
-
   
   for (int i = 1; i < argc; ++i) {
     pid = fork();
